@@ -5,21 +5,18 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const clientDir = __dirname + "/client";
 
+let textDoc = "";
+
 console.log(clientDir);
 
 app.use(express.static(clientDir));
 
 io.on("connection", async (socket) => {
-  console.log("Got connect!");
-
-  socket.emit("id", "tjosan folket");
-
-  socket.on("disconnect", function () {
-    console.log("Got disconnect!");
-  });
-
+  socket.emit("msg", textDoc);
   socket.on("msg", function (msg) {
-    io.sockets.emit("msg", msg);
+    console.log(msg);
+    textDoc = msg;
+    io.sockets.emit("msg", textDoc);
   });
 });
 

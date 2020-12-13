@@ -1,19 +1,12 @@
-const textArea = document.getElementsByTagName("textarea")[0]
-
-textArea.oninput = () => {
-    console.log(textArea.value)
-}
+const textArea = document.getElementsByTagName("textarea")[0];
 
 const socket = io();
 
 socket.on("connect", () => {
-  socket.on("id", function (msg) {
-    console.log("Msg " + msg);
-    id = msg;
-  });
   socket.on("msg", function (msg) {
-    if (JSON.parse(msg).recv == id) {
-      document.getElementById("mainP").innerText = msg;
-    }
+    textArea.innerText = msg;
   });
+  textArea.oninput = () => {
+    socket.emit("msg", textArea.value);
+  };
 });
