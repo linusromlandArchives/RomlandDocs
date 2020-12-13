@@ -1,0 +1,27 @@
+{
+  "name": "romlanddocs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "devStart": "nodemon",
+    "start": "forever app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linusromland/RomlandDocs.git"
+  },
+  "author": "Linus Romland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linusromland/RomlandDocs/issues"
+  },
+  "homepage": "https://github.com/linusromland/RomlandDocs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "forever": "^3.0.4"
+  }
+}
