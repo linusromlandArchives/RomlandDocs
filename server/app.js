@@ -14,7 +14,6 @@ app.use(express.static(clientDir));
 io.on("connection", async (socket) => {
   socket.emit("msg", textDoc);
   socket.on("msg", function (msg) {
-    console.log(msg);
     textDoc = msg;
     io.sockets.emit("msg", textDoc);
   });
